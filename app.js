@@ -8,7 +8,6 @@ let treasure = {
 
 let clickUpgrades = {
   'bag': {
-    name: bag,
     price: 10,
     owned: 0,
     multiplier: 2
@@ -22,7 +21,7 @@ let clickUpgrades = {
 
 let autoUpgrades = {
   troll: {
-    price: 50,
+    price: 10,
     owned: 0,
     multiplier: 2
   },
@@ -33,7 +32,11 @@ let autoUpgrades = {
   }
 }
 
-
+// if (treasure.clickCount < clickUpgrades.bag.price) {
+//   document.getElementById('bagButton').disabled = true
+// } else {
+//   document.getElementById('bagButton').disabled = false
+// }
 /**
  * Find total modifier amount : goal number
  * Add total to clickCount
@@ -76,26 +79,31 @@ function mine() {
 
 function purchaseItem(itemClicked) {
   let item = clickUpgrades[itemClicked]
-  if (treasure.clickCount < item.price) { return }
+  if (treasure.clickCount < item.price) {
+    return
+  }
   treasure.clickCount -= item.price
   item.owned++
+  item.price += 20
   console.log(item.owned)
   update()
 }
 
-function purchaseAutoUpgrades(upgradeClicked) {
-  let helper = clickUpgrades[upgradeClicked]
-  if (treasure.clickCount < helper.price) { return }
-  treasure.clickCount -= helper.price
-  helper.owned++
-  console.log(helper.owned)
+function purchaseAutoUpgrade(upgradeClicked) {
+  let autoUpgrade = autoUpgrades[upgradeClicked]
+  if (treasure.clickCount < autoUpgrade.price) { return }
+  treasure.clickCount -= autoUpgrade.price
+  autoUpgrade.owned++
+  autoUpgrade.price += 50
+  console.log(autoUpgrade.owned)
   update()
 }
 
 function autoMine() {
-  // find total of autoUpgrades owned * multiplier
-  //change the auto collect stat on page to reflect the total
-  // change the inventory amount
+  let totalAutoMineAmount = (autoUpgrades.dragon.owned * autoUpgrades.dragon.multiplier) + (autoUpgrades.troll.owned * autoUpgrades.troll.multiplier)// find total of autoUpgrades owned * multiplier
+  // add total auto mine amount to click count on interval
+  treasure.clickCount += totalAutoMineAmount
+  update()
   // access autoUpgrade helpers and add to clickCount #owned * multiplier
   // call this function on an interval
 }
@@ -106,6 +114,13 @@ function update() {
   document.getElementById('bagsOwned').innerText = clickUpgrades.bag.owned
   document.getElementById('cartsOwned').innerText = clickUpgrades.cart.owned
   document.getElementById('clickPowerCount').innerText = (clickUpgrades.bag.owned * clickUpgrades.bag.multiplier) + (clickUpgrades.cart.owned * clickUpgrades.cart.multiplier) + treasure.clickPower
+  document.getElementById('bagPrice').innerText = clickUpgrades.bag.price
+  document.getElementById('cartPrice').innerText = clickUpgrades.cart.price
+  document.getElementById('trollsOwned').innerText = autoUpgrades.troll.owned
+  document.getElementById('dragonsOwned').innerText = autoUpgrades.dragon.owned
+  document.getElementById('autoCollectCount').innerText = (autoUpgrades.troll.owned * autoUpgrades.troll.multiplier) + (autoUpgrades.dragon.owned * autoUpgrades.dragon.multiplier)  //changes the auto collect stat on page to reflect the total
+  document.getElementById('trollPrice').innerText = autoUpgrades.troll.price
+  document.getElementById('dragonPrice').innerText = autoUpgrades.dragon.price
 
 }
 

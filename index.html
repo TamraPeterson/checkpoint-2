@@ -37,7 +37,7 @@
 
     <div class="row p-3 ">
       <div class="col-12 image d-flex justify-content-center" id="image">
-        <img class="image img-fluid clickable"
+        <img class="image img-fluid clickable rounded"
           src="https://st2.depositphotos.com/1909225/8777/i/600/depositphotos_87772008-stock-photo-dragons-treasure.jpg"
           onclick="mine()" alt="">
       </div>
@@ -106,7 +106,7 @@
 
     <div class="row justify-content-center">
       <div class="col-12 text-center" id="store">
-        <div class="row">
+        <div class="row border-bottom border-dark mb-3">
           <h3>Store</h3>
         </div>
         <div class="row">
@@ -119,18 +119,28 @@
         </div>
         <div class="row justify-content-around p-3">
           <div class="col-6">
-            10 Gold <button id='bag' onclick="purchaseItem('bag')">💰</button> Treasure Bag: +2 per click
+            <span id="bagPrice">10</span> Gold <button id='bagButton' onclick="purchaseItem('bag')">💰</button> Treasure
+            Bag:
+            +2 per click
           </div>
-          <div class="col-6">50 Gold <button id='troll' onclick="">👲</button> Treasure Troll: collects 2 treasure
+          <div class="col-6">
+            <span id="trollPrice">50</span> Gold <button id='trollButton'
+              onclick="purchaseAutoUpgrade('troll')">👲</button>
+            Treasure
+            Troll: collects 2 treasure per second
           </div>
         </div>
         <div class="row justify-content-center p-3">
-          <div class="col-6">20 Gold <button id='cartButton' onclick="purchaseItem('cart')">🛒</button> Treasure Cart:
-            +5
-            per
-            click
+          <div class="col-6">
+            <span id="cartPrice">20</span> Gold <button id='cartButton' onclick="purchaseItem('cart')">🛒</button>
+            Treasure Cart:
+            +5 per click
           </div>
-          <div class="col-6">100 Gold <button id='dragon' onclick="">🐉</button> Dragon: collects 10 treasure</div>
+          <div class="col-6">
+            <span id="dragonPrice">100</span> Gold <button id='dragonButton'
+              onclick="purchaseAutoUpgrade('dragon')">🐉</button> Dragon:
+            collects 10 treasure per second
+          </div>
         </div>
 
       </div>
