@@ -1,0 +1,21 @@
+.clickable{
+  cursor: pointer;
+  transition: all .1s ease;
+}
+.clickable:hover{
+  transform: scale(1.01);
+  filter: drop-shadow(0px 0px 3px white)
+}
+.clickable:active{
+  transform: scale(1);
+
+}
+
+.image{
+  max-height: 35vh;
+  object-fit: cover;
+}
+
+.grad {
+  background-image: linear-gradient(to bottom right, rgb(187, 45, 45), rgb(240, 240, 97));
+}

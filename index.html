@@ -1,0 +1,151 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+    integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Clicker Game</title>
+  <style>
+    body.debug .container,
+    body.debug .container-fluid {
+      outline: 2px double blue;
+      outline-offset: -2px;
+    }
+
+    body.debug .row {
+      outline: 2px dashed red;
+      outline-offset: -2px;
+    }
+
+    body.debug [class*="col-"] {
+      outline: 2px dotted forestgreen;
+      outline-offset: -3px;
+    }
+  </style>
+</head>
+
+<body class="grad">
+  <header class="container-fluid text-center p-3">
+    <h2>Click to Collect Treasure!</h2>
+  </header>
+
+  <main class="container-fluid">
+
+    <div class="row p-3 ">
+      <div class="col-12 image d-flex justify-content-center" id="image">
+        <img class="image img-fluid clickable"
+          src="https://st2.depositphotos.com/1909225/8777/i/600/depositphotos_87772008-stock-photo-dragons-treasure.jpg"
+          onclick="mine()" alt="">
+      </div>
+
+      <div class="row justify-content-center p-3">
+
+        <div class="col-4" id="stats">
+          <div class="row text-center">
+            <h3>Stats:</h3>
+          </div>
+          <div class="row text-center">
+            <div class="col-6 ">
+              <h5>Click Power: </h5>
+            </div>
+            <div class="col-6">
+              <h5><span id="clickPowerCount">1</span></h5>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-6">
+              <h5>Auto Collect:</h5>
+            </div>
+            <div class="col-6">
+              <h5><span id="autoCollectCount">0</span></h5>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-4 text-center p-3" id="inventory">
+          <div class="row">
+            <h3>Treasure:</h3>
+          </div>
+          <div class="row">
+            <h1><span id="clickCount">0</span></h1>
+          </div>
+        </div>
+
+        <div class="col-4 text-center p-3">
+          <h3>Inventory:</h3>
+          <div class="row ">
+            <div class="col-6">
+              <p>Treasure Bags: <span id="bagsOwned">0</span></p>
+              <p>Treasure Carts: <span id="cartsOwned">0</span></p>
+            </div>
+            <div class="col-6">
+              <p>Treasure Trolls: <span id="trollsOwned">0</span></p>
+              <p>Dragons: <span id="dragonsOwned">0</span></p>
+            </div>
+
+          </div>
+
+          <h5></h5>
+        </div>
+      </div>
+      <!-- <div class="row text-center">
+        <div class="col-6">
+          <h5>Auto Collect:</h5>
+        </div>
+        <div class="col-6">
+          <h5><span id="autoCollectCount">0</span></h5>
+        </div>
+      </div> -->
+    </div>
+    </div>
+
+
+    <div class="row justify-content-center">
+      <div class="col-12 text-center" id="store">
+        <div class="row">
+          <h3>Store</h3>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <h5>Click Power Upgrades</h5>
+          </div>
+          <div class="col-6">
+            <h5>Automatic Treasure Collection</h5>
+          </div>
+        </div>
+        <div class="row justify-content-around p-3">
+          <div class="col-6">
+            10 Gold <button id='bag' onclick="purchaseItem('bag')">💰</button> Treasure Bag: +2 per click
+          </div>
+          <div class="col-6">50 Gold <button id='troll' onclick="">👲</button> Treasure Troll: collects 2 treasure
+          </div>
+        </div>
+        <div class="row justify-content-center p-3">
+          <div class="col-6">20 Gold <button id='cartButton' onclick="purchaseItem('cart')">🛒</button> Treasure Cart:
+            +5
+            per
+            click
+          </div>
+          <div class="col-6">100 Gold <button id='dragon' onclick="">🐉</button> Dragon: collects 10 treasure</div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <script src="app.js"></script>
+  </main>
+
+  <footer class="container-fluid text-center bg-dark text-light mt-4">
+    <h5>Made with 💗 by Tamra</h5>
+  </footer>
+
+</body>
+
+</html>
