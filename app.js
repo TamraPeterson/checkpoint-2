@@ -109,4 +109,4 @@ function update() {
 
 }
 
-let modifierInterval = setInterval(autoMine, 1000)
+setInterval(autoMine, 1000)
