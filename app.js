@@ -108,6 +108,10 @@ function autoMine() {
   // call this function on an interval
 }
 
+function disableButtons(button) {
+  let buttonClicked = button[buttonClicked]
+
+}
 
 function update() {
   document.getElementById('clickCount').innerText = treasure.clickCount
@@ -121,7 +125,26 @@ function update() {
   document.getElementById('autoCollectCount').innerText = (autoUpgrades.troll.owned * autoUpgrades.troll.multiplier) + (autoUpgrades.dragon.owned * autoUpgrades.dragon.multiplier)  //changes the auto collect stat on page to reflect the total
   document.getElementById('trollPrice').innerText = autoUpgrades.troll.price
   document.getElementById('dragonPrice').innerText = autoUpgrades.dragon.price
-
+  if (treasure.clickCount < clickUpgrades.bag.price) {
+    document.getElementById('bagButton').disabled = true
+  } else {
+    document.getElementById('bagButton').disabled = false
+  }
+  if (treasure.clickCount < clickUpgrades.cart.price) {
+    document.getElementById('cartButton').disabled = true
+  } else {
+    document.getElementById('cartButton').disabled = false
+  }
+  if (treasure.clickCount < autoUpgrades.troll.price) {
+    document.getElementById('trollButton').disabled = true
+  } else {
+    document.getElementById('trollButton').disabled = false
+  }
+  if (treasure.clickCount < autoUpgrades.dragon.price) {
+    document.getElementById('dragonButton').disabled = true
+  } else {
+    document.getElementById('dragonButton').disabled = false
+  }
 }
-
+update()
 setInterval(autoMine, 1000)
